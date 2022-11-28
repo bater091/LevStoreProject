@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+    <meta charset="UTF-8">
+    <link  rel="stylesheet" href="/style/style.css">
+    <title>Title</title>
+</head>
+<body>
+
+<center> <h1 type="text" th:text="${productName}"></h1></center>
+
+<div class="pos">
+    <h2>price:</h2>
+    <h2 type="text"  th:text="${price}"></h2>
+
+</div>
+
+
+<img th:src="@{'/images/' + ${fileName}}">
+<center>
+    <form method="post" th:action="@{/product/addToBasket}">
+        <input class="a" type="text" id="productName" name="productName" th:value="${productName}">
+        <input type="text" id="amount" name="amount" placeholder="amount">
+        <button>addToBasket</button>
+
+    </form>
+</center>
+
+
+</body>
+</html>

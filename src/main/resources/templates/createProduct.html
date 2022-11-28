@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="topMenu :: copy"></div>
+<form method="post" enctype="multipart/form-data" th:action="@{/product/confirm}">
+    <div class="pos">
+    <label for="file">Choose file to upload</label>
+    <input type="file" id="file" name="file" multiple>
+        </div>
+    <input class="pos" type="number" id="price" name="price" placeholder="price">
+        <input class="pos" type="text" id="name" name="name" placeholder="name">
+
+
+    <center>
+        <button>Submit</button>
+    </center>
+
+</form>
+
+</body>
+</html>

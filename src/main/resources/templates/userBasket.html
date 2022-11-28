@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="topMenu :: copy"></div>
+<th:block th:each="map : ${basket}">
+
+    <center><h1 id="productName" class="pos" th:utext="${map.key.productName}"></h1></center>
+    <img th:src="@{'/images/' + ${map.key.fileName}}">
+    <div class="pos">
+        <h2>amount:</h2>
+        <h2 class="pos" th:text="${map.value}"></h2>
+    </div>
+</th:block>
+<center>
+<form method="get" th:action="@{/product/clearBasket}">
+    <button>clearBasket</button>
+
+</form>
+
+<form method="get" th:action="@{/product/clearBasket}">
+    <button>buy</button>
+</form>
+</center>
+</body>
+</html>

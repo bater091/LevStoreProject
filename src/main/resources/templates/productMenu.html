@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="topMenu :: copy"></div>
+<form method="get" th:action="@{/product/productMenu}">
+    <input class="a" type="text" id="markerHigh" name="marker" value="high">
+    <button>high price</button>
+</form>
+<form method="get" th:action="@{/product/productMenu}">
+    <input class="a" type="text" id="markerLow" name="marker" value="low">
+    <button>low price</button>
+</form>
+<form method="get" th:action="@{/product}">
+    <button>back</button>
+</form>
+<th:block th:each="product : ${products}">
+
+         <center> <h1 type="text" th:text="${product.productName}"></h1></center>
+
+    <div class="pos">
+        <h2>price:</h2>
+        <h2 type="text"  th:text="${product.price}"></h2>
+
+    </div>
+
+
+    <img th:src="@{'/images/' + ${product.fileName}}">
+    <center>
+        <form method="post" th:action="@{/product/addToBasket}">
+            <input class="a" type="text" id="productName" name="productName" th:value="${product.productName}">
+            <input type="" id="amount" name="amount" placeholder="amount">
+            <button>addToBasket</button>
+
+        </form>
+    </center>
+
+</th:block>
+
+
+</body>
+</html>

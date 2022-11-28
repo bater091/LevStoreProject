@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="topMenu :: copy"></div>
+<h1 th:text="${username}"></h1>
+<th:block th:each="product : ${products}">
+    <center><h1 type="text" th:text="${product.productName}"></h1></center>
+
+    <div class="pos">
+        <h2>price:</h2>
+        <h2 type="text" th:text="${product.price}"></h2>
+
+    </div>
+    <img th:src="@{'/images/' + ${product.fileName}}">
+    <center>
+    <form th:action="@{/product/deleteProduct}" method="post">
+        <input class="a" type="text" th:value="${product.productName}" name="product">
+        <button>delete</button>
+    </form>
+    </center>
+</th:block>
+</body>
+</html>
