@@ -13,7 +13,7 @@ public class ProductValidator {
         this.productRepository = productRepository;
     }
     public Product validateProduct(Product product){
-        if(productRepository.findByProductName(product.getProductName()).isEmpty()){
+        if(productRepository.findByProductName(product.getProductName()).isPresent()){
             return product;
         }else {
             throw new RuntimeException("product is exist");
